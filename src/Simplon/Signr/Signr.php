@@ -74,13 +74,8 @@
      * @return string
      * @throws \Exception
      */
-    public function createSignedRequest($data, $secretKey)
+    public function createSignedRequest(array $data, $secretKey)
     {
-      if(! is_array($data))
-      {
-        throw new \Exception('makeSignedRequest expects an array. Got: ' . print_r($data, TRUE));
-      }
-
       // encrypt "secret"
       if(isset($data['secret']))
       {
@@ -122,7 +117,7 @@
       // validate used algorithm
       if(strtoupper($data['algorithm']) !== self::SIGNED_REQUEST_ALGORITHM)
       {
-        throw new \Exception('Unknown algorithm. Expected ' . self::SIGNED_REQUEST_ALGORITHM);
+        throw new \Exception(__NAMESPACE__ . ': unknown algorithm. Expected ' . self::SIGNED_REQUEST_ALGORITHM);
       }
 
       // validate signature
@@ -130,7 +125,7 @@
 
       if($sig !== $expected_sig)
       {
-        throw new \Exception('Bad Signed JSON signature!');
+        throw new \Exception(__NAMESPACE__ . ': invalid signed signature. Good bye!');
       }
 
       // decrypt "secret"
