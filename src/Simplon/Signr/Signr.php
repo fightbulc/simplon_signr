@@ -121,7 +121,7 @@
       }
 
       // validate signature
-      $expected_sig = hash_hmac('sha256', $payload, $secretKey, $raw = TRUE);
+      $expected_sig = trim(hash_hmac('sha256', $payload, $secretKey, $raw = TRUE));
 
       if($sig !== $expected_sig)
       {
