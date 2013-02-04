@@ -1,29 +1,30 @@
 {
-    "name": "simplon/signr",
-    "description": "Create and validate Signed Requests including data encryption.",
-    "homepage": "https://github.com/fightbulc/simplon_signr",
-    "version": "0.5.0",
-    "type": "library",
-    "keywords": ["signed requests", "encryption"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Tino Ehrich",
-            "email": "opensource@efides.com",
-            "role": "developer"
-        }
-    ],
-
-    "minimum-stability": "dev",
-
-    "require": {
-        "php": ">=5.3.3",
-        "ext-json": "*"
-    },
-
-    "autoload": {
-        "psr-0": {
-            "Simplon\\Signr\\": "src/"
-        }
+  "name": "simplon/signr",
+  "description": "Create and validate Signed Requests including data encryption.",
+  "homepage": "https://github.com/fightbulc/simplon_signr",
+  "version": "0.5.0",
+  "type": "library",
+  "keywords": ["signed requests", "encryption"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tino Ehrich",
+      "email": "opensource@efides.com",
+      "role": "developer"
     }
+  ],
+
+  "minimum-stability": "dev",
+
+  "require": {
+    "php": ">=5.3.3",
+    "ext-mcrypt": "*",
+    "ext-json": "*"
+  },
+
+  "autoload": {
+    "psr-0": {
+      "Simplon\\Signr\\": "src/"
+    }
+  }
 }
