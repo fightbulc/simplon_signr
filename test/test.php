@@ -6,18 +6,18 @@
 
   $secretKey = '12345abcd';
 
-  $data = array(
-    'secret'       => array(
-      'user' => array(
+  $data = [
+    'secret'       => [
+      'user' => [
         'id'       => 1,
         'username' => 'AnotherDay',
         'email'    => 'mail@allmails.com',
-      ),
+      ],
       'view' => 'blue01',
-    ),
+    ],
     'gameToken'    => 'kal',
     'partnerToken' => 'jag',
-  );
+  ];
 
   echo "<h1>Data package:</h1>";
   var_dump($data);
