@@ -2,7 +2,7 @@
   "name": "simplon/signr",
   "description": "Create and validate Signed Requests including data encryption.",
   "homepage": "https://github.com/fightbulc/simplon_signr",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "type": "library",
   "keywords": ["signed requests", "encryption"],
   "license": "MIT",
@@ -24,7 +24,7 @@
 
   "autoload": {
     "psr-0": {
-      "Simplon\\Signr\\": "src/"
+      "Simplon\\Signr": "src/"
     }
   }
 }

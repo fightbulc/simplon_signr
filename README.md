@@ -38,7 +38,11 @@ $data = [
 ];
 
 // create signed request
-$signedRequest = (new Signr())->createSignedRequest($data, $secretKeySignedRequest);
+$signedRequest = (new Signr())
+    ->setData($data)
+    ->setSecretKey($secretKeySignedRequest)
+    ->create()
+    ->getSignedRequest();
 ```
 
 ### Generated signed request
@@ -61,7 +65,11 @@ $signedRequest = 'xxxzzzyyy';
 $secretKeySignedRequest = '123456';
 
 // read data should result the following array...
-$data = (new Signr())->readSignedRequest($signedRequest, $secretKeySignedRequest);
+$data = (new Signr())
+    ->setSignedRequest($signedRequest)
+    ->setSecretKey($secretKeySignedRequest)
+    ->read()
+    ->getData();
 
 /*
 $data = [
@@ -84,3 +92,36 @@ $data = [
 ];
 */
 ```
+
+## Expire Time
+
+Each signed request holds an issued time stamp which allows to test if a signed-request is expired. By default a signed-request never expires. Following an example how to test against a certain time stamp:
+
+```php
+use Simplon\Signr\Signr;
+
+$signedRequest = 'xxxzzzyyy';
+$secretKeySignedRequest = '123456';
+
+// lets hold the instance
+$signr = new Signr()
+    ->setSignedRequest($signedRequest)
+    ->setSecretKey($secretKeySignedRequest)
+    ->read();
+
+// is expired?
+$isExpired = $signr
+    ->setExpireTimeMinutes(120) // time to run against the expiration
+    ->isExpired();
+
+if($isExpired === TRUE)
+{
+  echo "SignedRequest is expired!";
+}
+```
+
+## Changelog
+
+### 0.6.0
+- Refactored class pattern (builder pattern)
+- Implemented ```isExpired``` to test against expiration
